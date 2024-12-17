@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <h1 class="custom-heading">Лабораторна робота №2</h1>
+            <div class="buttons">
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="toggleContent('result')">Результат</button>
+                <button class="custom-button" onclick="toggleContent('content')">Код</button>
+
+            </div>
+            <div id="condition" class="hidden-content">
+                <p>Використовуючи структурну структуру створити
+                    багатосторінковий web-сайт для звітів щодо виконання лабораторних робіт.
+                    Залити отримані документи на локальний сервер.</p>
+            </div>
+            <div id="result" class="hidden-content">
+                <p>Тут буде результат виконання завдання...</p>
+            </div>
+            <div id="content" class="hidden-content" style="margin-top: 20px;">
+                <style>
+                    .github-button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        color: #fff;
+                        background-color: #007acc;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        border: 2px solid #005f99;
+                        transition: background-color 0.3s, transform 0.2s;
+                    }
+            
+                    .github-button:hover {
+                        background-color: #005f99;
+                        transform: scale(1.05);
+                    }
+            
+                    .github-button:active {
+                        background-color: #004a7c;
+                    }
+                </style>
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="github-button" target="_blank">Посилання на GitHub</a>
+            </div>
+            
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
