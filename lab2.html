@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <h1 class="custom-heading">Лабораторна робота №2</h1>
+            <div class="buttons">
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="toggleContent('result')">Результат</button>
+                <button class="custom-button" onclick="toggleContent('content')">Код</button>
+
+            </div>
+            <div id="condition" class="hidden-content">
+                <p><b>Варіант 9:</b>
+                    Гра «М'ячі, що падають». Ігровим полем зверху вниз у випадковому порядку
+                    падають м'ячі, які потрібно ловити кошиком, що пересувається за допомогою
+                    клавіатури горизонтально вздовж нижньої межі ігрового поля. Гра можна почати і
+                    припинити клацанням по відповідній кнопці.</p>
+            </div>
+            <div id="result" class="hidden-content">
+                <div id="controls">
+                    <button class="custom-button" id = "start-button">Почати</button>
+                    <button class="custom-button" id="stop-button">Зупинити</button>
+                    <span id="score">Очки: 0</span>
+                  </div>
+                  <div id="game-container">
+                    <div id="basket"></div>
+                  </div>
+
+
+
+            </div>
+            <div id="content" class="hidden-content" style="margin-top: 20px;">
+                <style>
+                    .github-button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        color: #fff;
+                        background-color: #007acc;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        border: 2px solid #005f99;
+                        transition: background-color 0.3s, transform 0.2s;
+                    }
+            
+                    .github-button:hover {
+                        background-color: #005f99;
+                        transform: scale(1.05);
+                    }
+            
+                    .github-button:active {
+                        background-color: #004a7c;
+                    }
+
+
+                    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  #game-container {
+    position: relative;
+    width: 600px; /* Уменьшение ширины */
+    height: 400px; /* Уменьшение высоты */
+    margin: 20px auto; /* Центрирование на странице */
+    background: #87ceeb;
+    overflow: hidden;
+    border: 2px solid #005f99; /* Граница для улучшения визуального эффекта */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для объема */
+}
+.ball {
+    position: absolute;
+    width: 20px; /* Уменьшение размера */
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+#basket {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 80px; /* Уменьшение ширины */
+    height: 15px; /* Уменьшение высоты */
+    background: #654321;
+    transform: translateX(-50%);
+}
+
+#controls {
+    position: static; /* Перенос управления вне контейнера */
+    margin: 10px auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center; /* Центрирование кнопок */
+}
+
+#score {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+  
+                </style>
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="github-button" target="_blank">Посилання на GitHub</a>
+            </div>
+            
+        </main>
+    </div>
+    
+  
+
+
+
+
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>
