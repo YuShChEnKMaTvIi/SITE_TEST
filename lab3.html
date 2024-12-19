@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <h1 class="custom-heading">Лабораторна робота №3</h1>
+            <div class="buttons"> 
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="toggleContent('result')">Результат</button>
+                <button class="custom-button" onclick="toggleContent('content')">Код</button>
+
+            </div>
+            <div id="condition" class="hidden-content">
+                <p>Використовуючи структурну структуру створити
+                    багатосторінковий web-сайт для звітів щодо виконання лабораторних робіт.
+                    Залити отримані документи на локальний сервер.</p>
+            </div>
+            <div id="result" class="hidden-content">
+
+                <h3>Перевірка рядка</h3>
+                <p>Рядок: <code>'a1a a2a a3a a4a a5a aba aca'</code></p>
+                <button id="checkStringButton">Перевірити рядок</button>
+               
+
+
+
+            </div>
+            <div id="content" class="hidden-content" style="margin-top: 20px;">
+                <style>
+                   body
+                   {
+                            background: #9ed6e4;
+
+                   }
+                    .github-button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        color: #fff;
+                        background-color: #007acc;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        border: 2px solid #005f99;
+                        transition: background-color 0.3s, transform 0.2s;
+                    }
+            
+                    .github-button:hover {
+                        background-color: #005f99;
+                        transform: scale(1.05);
+                    }
+            
+                    .github-button:active {
+                        background-color: #004a7c;
+                    }
+
+                    form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+
+
+        /* Стили для формы */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #007acc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+form .form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Кнопки в форме */
+form .form-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Красная кнопка (например, "Отмена") */
+form .form-buttons .cancel-button {
+    background-color: #e74c3c; /* Красный */
+    border: 2px solid #c0392b; /* Темно-красный обвод */
+}
+
+form .form-buttons .cancel-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+form .form-buttons .cancel-button:active {
+    background-color: #a93226;
+}
+
+/* Зелёная кнопка (например, "Сохранить") */
+form .form-buttons .submitbutton {
+    background-color: #2ecc71; /* Зелёный */
+    border: 2px solid #27ae60; /* Темно-зелёный обвод */
+}
+
+form .form-buttons .submit-button:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+
+form .form-buttons .submit-button:active {
+    background-color: #1e8449;
+}
+
+
+
+                </style>
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="github-button" target="_blank">Посилання на GitHub</a>
+            </div>
+            <h2>Форма реєстрації</h2>
+            <form id="registrationForm">
+                <label for="firstName">Ім'я:</label>
+                <input type="text" id="firstName" name="firstName" required><br><br>
+                
+                <label for="lastName">Прізвище:</label>
+                <input type="text" id="lastName" name="lastName" required><br><br>
+                
+                <label for="organization">Найменування організації:</label>
+                <input type="text" id="organization" name="organization" required><br><br>
+                
+                <label for="cardNumber">Номер кредитної картки:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required><br>
+                <span id="cardError" class="error"></span><br>
+                
+                <label for="phone">Номер телефону:</label>
+                <input type="tel" id="phone" name="phone" required><br><br>
+                
+                <label for="email">Адреса електронної пошти:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                
+                <button type="button" id="submitButton">Надіслати</button>
+                <button type="reset">Очистити</button>
+            </form>
+        
+           
+        
+            <script>
+                const form = document.getElementById('registrationForm');
+                const cardNumberInput = document.getElementById('cardNumber');
+                const cardError = document.getElementById('cardError');
+                const submitButton = document.getElementById('submitButton');
+                const checkStringButton = document.getElementById('checkStringButton');
+                const result = document.getElementById('result');
+                
+                let invalidAttempts = 0;
+                const maxAttempts = 3;
+        
+                function validateCardNumber(cardNumber) {
+                    const cardPattern = /^[0-9]{16}$/; // Номер картки повинен містити 16 цифр
+                    return cardPattern.test(cardNumber);
+                }
+        
+                function validateForm() {
+                    const firstName = document.getElementById('firstName').value.trim();
+                    const lastName = document.getElementById('lastName').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    
+                    // Перевірка на коректність імені та прізвища
+                    if (!/^[A-Za-zА-Яа-яІіЇїЄєҐґ'-]+$/.test(firstName)) {
+                        alert("Неправильний формат імені!");
+                        return false;
+                    }
+                    if (!/^[A-Za-zА-Яа-яІіЇїЄєҐґ'-]+$/.test(lastName)) {
+                        alert("Неправильний формат прізвища!");
+                        return false;
+                    }
+        
+                    // Перевірка на коректність номеру телефону
+                    if (!/^\+?\d{10,15}$/.test(phone)) {
+                        alert("Неправильний формат номеру телефону!");
+                        return false;
+                    }
+        
+                    // Перевірка на коректність email
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        alert("Неправильний формат email!");
+                        return false;
+                    }
+        
+                    return true;
+                }
+        
+                submitButton.addEventListener('click', () => {
+                    const cardNumber = cardNumberInput.value.trim();
+        
+                    if (!validateCardNumber(cardNumber)) {
+                        invalidAttempts++;
+                        cardError.textContent = `Номер кредитної картки неправильний. Залишилось спроб: ${maxAttempts - invalidAttempts}`;
+                        if (invalidAttempts >= maxAttempts) {
+                            alert("Досягнуто ліміт спроб введення картки!");
+                            cardNumberInput.disabled = true;
+                            submitButton.disabled = true;
+                        }
+                        return;
+                    }
+        
+                    cardError.textContent = ''; // Очистити помилки картки
+                    
+                    if (validateForm()) {
+                        alert("Форма успішно відправлена!");
+                        form.reset();
+                        invalidAttempts = 0; // Скинути лічильник спроб
+                    }
+                });
+        
+                checkStringButton.addEventListener('click', () => {
+        const inputString = 'a1a a2a a3a a4a a5a aba aca';
+        const regex = /\ba\da\b/g; // Шукає слова у форматі aXa, де X - цифра
+        const matches = inputString.match(regex);
+
+        if (matches) {
+            result.textContent = `Знайдені збіги: ${matches.join(', ')}`;
+        } else {
+            result.textContent = 'Збігів не знайдено.';
+        }
+    });
+
+            
+            </script>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
