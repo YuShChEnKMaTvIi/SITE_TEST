@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №4</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .github-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007acc;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #005f99;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .github-button:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+
+        .github-button:active {
+            background-color: #004a7c;
+        }
+
+        #text {
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+        }
+
+        #blueBlock {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+        .custom-form {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .custom-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .custom-form input,
+        .custom-form select {
+            padding: 8px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <h1 class="custom-heading">Лабораторна робота №4</h1>
+            <div class="buttons">
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="toggleContent('result')">Результат</button>
+                <button class="custom-button" onclick="toggleContent('content')">Код</button>
+            </div>
+            <div id="condition" class="hidden-content">
+                <p> <b>Завдання 1</b> На кліку на тексті він замінювався іншим текстом <br>
+
+<b>Завдання 2</b> Блок синього кольору з текстом всередині рухається праворуч
+наліво, в центрі сторінки блок збільшується, потім текст стає білим, текст збільшується.
+
+<b>Завдання 3</b> Додати на сторінку форму, що містить декілька елементів форми, при
+цьому при виборі певного значення в одному елементі (див. приклади):
+відображати інший елемент (для парних варіантів), робити недоступним інший елемент (для непарних варіантів).
+
+                </p>
+            </div>
+            <div id="result" class="hidden-content">
+                <div id="text">Клікніть, щоб змінити текст</div>
+                <div id="blueBlock">Текст</div>
+
+                <form id="dynamicForm" class="custom-form">
+                    <label for="options">Оберіть значення:</label>
+                    <select id="options" name="options">
+                        <option value="1">Варіант 1</option>
+                        <option value="2">Варіант 2</option>
+                        <option value="3">Варіант 3</option>
+                        <option value="4">Варіант 4</option>
+                    </select>
+    
+                    <div id="extraInputContainer" style="display: none; margin-top: 15px;">
+                        <label for="extraInput">Додаткове поле (для парних варіантів):</label>
+                        <input type="text" id="extraInput" name="extraInput" placeholder="Введіть текст">
+                    </div>
+    
+                    <div style="margin-top: 15px;">
+                        <label for="textInput">Поле для вводу:</label>
+                        <input type="text" id="textInput" name="textInput" placeholder="Доступне лише для парних варіантів">
+                    </div>
+                </form>
+                
+            </div>
+            <div id="content" class="hidden-content" style="margin-top: 20px;">
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="github-button" target="_blank">Посилання на GitHub</a>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    // Заміна тексту при кліку
+                    $('#text').on('click', function () {
+                        $(this).text('Текст змінено!');
+                    });
+
+                    // Анімація блоку
+                    function animateBlueBlock() {
+                        $('#blueBlock')
+                            .animate({ left: '50%' }, 1000) // Рух праворуч
+                            .animate({ left: '0%' }, 1000)  // Рух ліворуч
+                            .animate({ width: '200px', height: '200px' }, 1000) // Збільшення блоку
+                            .animate({ fontSize: '32px', backgroundColor: '#000' }, 500, function () { // Зміна тексту на білий
+                                $(this).css('color', '#fff'); // Додаємо зміну кольору тексту
+                            });
+                    }
+
+                    // Запуск анімації
+                    animateBlueBlock();
+                    setInterval(animateBlueBlock, 4000); // Повторення анімації
+
+                    // Логіка форми
+                    $('#options').on('change', function () {
+                        const selectedValue = parseInt($(this).val());
+
+                        // Логіка для парних варіантів
+                        if (selectedValue % 2 === 0) {
+                            $('#extraInputContainer').show(); // Показуємо додатковий елемент
+                            $('#textInput').prop('disabled', false); // Робимо інший елемент доступним
+                        } else {
+                            $('#extraInputContainer').hide(); // Ховаємо додатковий елемент
+                            $('#textInput').prop('disabled', true); // Робимо інший елемент недоступним
+                        }
+                    });
+
+                    // Ініціалізуємо стан при завантаженні
+                    $('#options').trigger('change');
+                });
+
+                // Функція для перемикання видимості контенту
+                function toggleContent(contentId) {
+                    const content = $('#' + contentId);
+                    content.toggleClass('hidden-content'); // Перемикаємо клас для показу/приховування
+                }
+            </script>
+        </main>
+    </div>
+</body>
+</html>
