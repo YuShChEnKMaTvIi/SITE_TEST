@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №5</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <h1 class="custom-heading">Лабораторна робота №5</h1>
+            <div class="buttons">
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="toggleContent('result')">Результат</button>
+                <button class="custom-button" onclick="toggleContent('content')">Код</button>
+            </div>
+            <div id="condition" class="hidden-content">
+                <p><b>29=14*2+1. Варіант №1</b> Створити кнопку, на кліку на якій заданий елемент на сторінці
+                    поводитиметься таким чином: Коричневий квадрат 50*50 пікс.
+                
+                <br>
+        <li>Зникає</li>
+        <li>З'являється на 50 пікселів правіше</li>
+        <li>Збільшується у 2 рази.</li>
+        <li>Рухається вниз на 100 пікселів.</li>
+        <li>Змінює колір на червоний</li>
+        <li>Плавно зникає.</li>
+                </p>
+            </div>
+            <div id="result" class="hidden-content">
+                <div id="square"></div>
+                <button id="animateButton" class="custom-button">Анімація</button>
+            </div>
+            <div id="content" class="hidden-content" style="margin-top: 20px;">
+                <style>
+                    body
+                    {
+                        background-color:rgb(167, 243, 206);
+                    }
+                    .github-button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        color: #fff;
+                        background-color: #007acc;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        border: 2px solid #005f99;
+                        transition: background-color 0.3s, transform 0.2s;
+                    }
+
+                    .github-button:hover {
+                        background-color: #005f99;
+                        transform: scale(1.05);
+                    }
+
+                    .github-button:active {
+                        background-color: #004a7c;
+                    }
+
+                    #square {
+                        width: 50px;
+                        height: 50px;
+                        background-color: brown;
+                        position: relative;
+                        margin-top: 20px;
+                    }
+
+                    #animateButton {
+                        margin-top: 20px;
+                    }
+                </style>
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="github-button" target="_blank">Посилання на GitHub</a>
+            </div>
+
+            <script>
+                $(document).ready(function() {
+                    $("#animateButton").click(function() {
+                        $("#square")
+                            .fadeOut(500) // 1. Зникає
+                            .promise().done(function() {
+                                $("#square")
+                                    .css("left", "+=50px") // 2. З'являється на 50 пікселів правіше
+                                    .fadeIn(500)
+                                    .animate({
+                                        width: "100px",
+                                        height: "100px"
+                                    }, 500) // 3. Збільшується у 2 рази
+                                    .animate({
+                                        top: "+=100px"
+                                    }, 500) // 4. Рухається вниз на 100 пікселів
+                                    .css("background-color", "red") // 5. Змінює колір на червоний
+                                    .fadeOut(1500); // 6. Плавно зникає
+                            });
+                    });
+                });
+            </script>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
