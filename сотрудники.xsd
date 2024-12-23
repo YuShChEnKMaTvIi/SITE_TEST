@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Описание элемента Employees -->
+    <xs:element name="Employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Employee" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- Полное имя -->
+                            <xs:element name="FullName">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="LastName" type="xs:string"/>
+                                        <xs:element name="FirstName" type="xs:string"/>
+                                        <xs:element name="MiddleName" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Адрес -->
+                            <xs:element name="Address">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="PostalCode" type="xs:string"/>
+                                        <xs:element name="SettlementType" type="xs:string"/>
+                                        <xs:element name="Region" type="xs:string"/>
+                                        <xs:element name="District" type="xs:string"/>
+                                        <xs:element name="SettlementName" type="xs:string"/>
+                                        <xs:element name="Street" type="xs:string"/>
+                                        <xs:element name="Building" type="xs:string"/>
+                                        <xs:element name="Block" type="xs:string" minOccurs="0"/>
+                                        <xs:element name="Apartment" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Телефоны -->
+                            <xs:element name="PhoneNumbers">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Home" type="xs:string" maxOccurs="unbounded"/>
+                                        <xs:element name="Mobile" type="xs:string" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Должность и отдел -->
+                            <xs:element name="Position" type="xs:string"/>
+                            <xs:element name="Department" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+
+<!-- Пример XML документа -->
+<Employees>
+    <Employee>
+        <FullName>
+            <LastName>Ivanov</LastName>
+            <FirstName>Ivan</FirstName>
+            <MiddleName>Ivanovich</MiddleName>
+        </FullName>
+        <Address>
+            <PostalCode>123456</PostalCode>
+            <SettlementType>City</SettlementType>
+            <Region>Region1</Region>
+            <District>District1</District>
+            <SettlementName>Settlement1</SettlementName>
+            <Street>Street1</Street>
+            <Building>10</Building>
+            <Block>1</Block>
+            <Apartment>101</Apartment>
+        </Address>
+        <PhoneNumbers>
+            <Home>123456789</Home>
+            <Mobile>987654321</Mobile>
+        </PhoneNumbers>
+        <Position>Manager</Position>
+        <Department>Sales</Department>
+    </Employee>
+</Employees>

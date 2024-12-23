@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Employees [
+    <!ELEMENT Employees (Employee+)>
+    
+    <!ELEMENT Employee (FullName, Address, PhoneNumbers, Position, Department)>
+    <!ATTLIST Employee id ID #REQUIRED>
+
+    <!ELEMENT FullName (LastName, FirstName, MiddleName)>
+    <!ELEMENT LastName (#PCDATA)>
+    <!ELEMENT FirstName (#PCDATA)>
+    <!ELEMENT MiddleName (#PCDATA)>
+
+    <!ELEMENT Address (PostalCode, SettlementType, Region, District, SettlementName, Street, Building, Block?, Apartment)>
+    <!ELEMENT PostalCode (#PCDATA)>
+    <!ELEMENT SettlementType (#PCDATA)>
+    <!ELEMENT Region (#PCDATA)>
+    <!ELEMENT District (#PCDATA)>
+    <!ELEMENT SettlementName (#PCDATA)>
+    <!ELEMENT Street (#PCDATA)>
+    <!ELEMENT Building (#PCDATA)>
+    <!ELEMENT Block (#PCDATA)>
+    <!ELEMENT Apartment (#PCDATA)>
+
+    <!ELEMENT PhoneNumbers (Home+, Mobile+)>
+    <!ELEMENT Home (#PCDATA)>
+    <!ELEMENT Mobile (#PCDATA)>
+
+    <!ELEMENT Position (#PCDATA)>
+    <!ELEMENT Department (#PCDATA)>
+]>
+
+<Employees>
+    <Employee id="1">
+        <FullName>
+            <LastName>Ivanov</LastName>
+            <FirstName>Ivan</FirstName>
+            <MiddleName>Ivanovich</MiddleName>
+        </FullName>
+        <Address>
+            <PostalCode>123456</PostalCode>
+            <SettlementType>City</SettlementType>
+            <Region>Region1</Region>
+            <District>District1</District>
+            <SettlementName>Settlement1</SettlementName>
+            <Street>Street1</Street>
+            <Building>10</Building>
+            <Block>1</Block>
+            <Apartment>101</Apartment>
+        </Address>
+        <PhoneNumbers>
+            <Home>123456789</Home>
+            <Mobile>987654321</Mobile>
+        </PhoneNumbers>
+        <Position>Manager</Position>
+        <Department>Sales</Department>
+    </Employee>
+</Employees>
