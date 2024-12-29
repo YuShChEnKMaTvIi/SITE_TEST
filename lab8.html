@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №8</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <style>
+                body {
+                    background-color: rgb(255, 242, 225);
+                }
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    margin: 20px 0;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+
+            <h1 class="custom-heading">Лабораторна робота №8</h1>
+            <div class="buttons">
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="displayXSLT()">Результат</button>
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="custom-button">Посилання на GitHub</a>
+            </div>
+            <div id="condition" class="hidden-content">
+                <p>
+                    1. Створіть власні шаблони XSL. Як вихідний файл використовуйте результати робіт 6 і 7.
+                    <br>
+                    2. Виконайте сортування записів за одним із можливих критеріїв та фільтрацію даних за одним із можливих показників.
+                </p>
+            </div>
+            <div id="result" class="hidden-content">
+                <h2>Оригінальний XML (усі 10 записів)</h2>
+                <div id="original-output">
+                    <p>Тут з’явиться результат...</p>
+                </div>
+                <h2>Відсортовані дані за прізвищем (зростання у алфавітному порядку)</h2>
+                <div id="sorted-output">
+                    <p>Тут з’явиться результат...</p>
+                </div>
+                <h2>Відфільтровані дані за зростанням по Департаменту "IT-відділ"</h2>
+                <div id="filtered-output">
+                    <p>Тут з’явиться результат...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+
+        function transformXML(xmlFile, xslFile, outputId) {
+            const resultDiv = document.getElementById(outputId);
+
+            // Загрузка XML
+            fetch(xmlFile)
+                .then(response => response.text())
+                .then(xmlText => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(xmlText, "text/xml");
+
+                    // Загрузка XSL
+                    fetch(xslFile)
+                        .then(response => response.text())
+                        .then(xslText => {
+                            const xsl = parser.parseFromString(xslText, "text/xml");
+
+                            if (window.XSLTProcessor) {
+                                const xsltProcessor = new XSLTProcessor();
+                                xsltProcessor.importStylesheet(xsl);
+
+                                const resultDocument = xsltProcessor.transformToFragment(xml, document);
+                                resultDiv.innerHTML = ""; // Очистка перед вставкой
+                                resultDiv.appendChild(resultDocument);
+                            } else if (window.ActiveXObject || "ActiveXObject" in window) {
+                                const transformedDocument = xml.transformNode(xsl);
+                                resultDiv.innerHTML = transformedDocument;
+                            } else {
+                                resultDiv.innerHTML = "Ваш браузер не підтримує XSLT.";
+                            }
+                        })
+                        .catch(() => {
+                            resultDiv.innerHTML = "Помилка завантаження XSL файлу.";
+                        });
+                })
+                .catch(() => {
+                    resultDiv.innerHTML = "Помилка завантаження XML файлу.";
+                });
+        }
+
+        function displayXSLT() {
+            document.getElementById("result").style.display = "block";
+
+            // Отображение оригинального XML
+            transformXML("сотрудники.xml", "сотрудники_оригинал.xsl", "original-output");
+
+            // Отображение отсортированного XML
+            transformXML("сотрудники.xml", "сотрудники_сорт.xsl", "sorted-output");
+
+            // Отображение отфильтрованного XML
+            transformXML("сотрудники.xml", "сотрудники_фильтр.xsl", "filtered-output");
+        }
+    </script>
+</body>
+</html>
