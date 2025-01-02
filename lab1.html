@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Горизонтальне меню з підменю</title>
+    <style>
+        /* Убираем отступы у body и html */
+        body, html {
+            background-color: #b3c6d3;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Стили для горизонтального меню */
+        .menu {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu-item {
+            position: relative;
+        }
+
+        .menu-item > a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .menu-item > a:hover {
+            background-color: #575757;
+        }
+
+        /* Подменю */
+        .submenu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #00509e;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            list-style-type: none;
+        }
+
+        .submenu li {
+            margin: 5px 0;
+        }
+
+        .submenu li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .submenu li a:hover {
+            background-color: #007acc;
+        }
+
+        /* Показываем подменю при наведении на пункт меню */
+        .menu-item:hover .submenu {
+            display: block;
+        }
+
+        /* Стили для основной части контента */
+        .content {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Убираем отступы у кнопок */
+        .custom-button {
+            padding: 10px;
+            margin: 5px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .custom-button:hover {
+            background-color: #005f99;
+        }
+
+        /* Скрытие контента */
+        .hidden-content {
+            display: none;
+        }
+
+        .hidden-content.active {
+            display: block;
+        }
+
+        /* Стили для кнопки GitHub */
+        .github-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007acc;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #005f99;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .github-button:hover {
+            background-color: #005f99;
+            transform: scale(1.05);
+        }
+
+        .github-button:active {
+            background-color: #004a7c;
+        }
+
+  /* Стили для изображения */
+  .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .interactive-image {
+            width: 300px;
+            height: 300px;
+            transition: transform 0.5s, width 0.5s, height 0.5s;
+        }
+
+        .interactive-image:hover {
+            width: 150px;
+            height: 150px;
+            transform: scale(0.5);
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Горизонтальное меню -->
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="lab1.html">Лабораторна робота №1</a>
+                    <ul class="submenu">
+                        <li><a href="lab1.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab2.html">Лабораторна робота №2</a>
+                    <ul class="submenu">
+                        <li><a href="lab2.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab3.html">Лабораторна робота №3</a>
+                    <ul class="submenu">
+                        <li><a href="lab3.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab4.html">Лабораторна робота №4</a>
+                    <ul class="submenu">
+                        <li><a href="lab4.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab5.html">Лабораторна робота №5</a>
+                    <ul class="submenu">
+                        <li><a href="lab5.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab6.html">Лабораторна робота №6</a>
+                    <ul class="submenu">
+                        <li><a href="lab6.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab7.html">Лабораторна робота №7</a>
+                    <ul class="submenu">
+                        <li><a href="lab7.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab8.html">Лабораторна робота №8</a>
+                    <ul class="submenu">
+                        <li><a href="lab8.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab9.html">Лабораторна робота №9</a>
+                    <ul class="submenu">
+                        <li><a href="lab9.html">Завдання</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="lab10.html">Лабораторна робота №10</a>
+                    <ul class="submenu">
+                        <li><a href="lab10.html">Завдання</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Основной контент -->
+        <div class="content">
+            <main class="content">
+                <h1 class="custom-heading">Лабораторна робота №1</h1>
+                <div class="buttons">
+                    <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                    <button class="custom-button" onclick="toggleContent('content')">Код</button>
+                    <button class="custom-button" onclick="toggleContent('image')">Зображення</button>
+                </div>
+                <div id="condition" class="hidden-content">
+                    <p><b>Завдання 1.</b> Використовуючи шари у документі Lab2_1. html організуйте меню для доступу
+                        до виконаних лабораторних робіт відповідно до варіанта, запропонованого викладачем.
+                        Варіант 1. Горизонтальне дворівневе меню, яке розкривається при наведенні
+                        покажчика миші. Другий рівень меню приховується, коли вказівник миші залишає
+                        область вибраного пункту або меню. <br> <b>Завдання 2.</b> Варіант 5. Додайте зображення на сторінку; при наведенні вказівника миші воно
+                        має поступово зменшуватися у розмірах, створюючи ілюзію видалення зображення
+                        (граничні значення висоти та ширини встановіть самостійно).</p>
+                </div>
+                <div id="result" class="hidden-content">
+                    <img src="img/скрин_лаб2.png" alt="Скриншот результату" height="100" width="300">
+                </div>
+
+                <div id="content" class="hidden-content" style="margin-top: 20px;">
+                    <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="github-button" target="_blank">Посилання на GitHub</a>
+                </div>
+                <div id="image" class="hidden-content">
+                    <div class="image-container">
+                        <img class="interactive-image" width="200" height="200" src="img/фото_лаб2.jpg" alt="Зображення" onload="preloadImage('img/фото_лаб2.jpg')">
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+
+</body>
+</html>

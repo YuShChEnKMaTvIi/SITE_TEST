@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №8</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Бічна панель -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a href="lab10.html">Лабораторна робота №10</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основний контент -->
+        <main class="content">
+            <style>
+                body {
+                    background-color: rgb(255, 208, 146);
+                }
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    margin: 20px 0;
+                    text-align: center;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: center;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+
+            <h1 class="custom-heading">Лабораторна робота №9</h1>
+            <div class="buttons">
+                <button class="custom-button" onclick="toggleContent('condition')">Умова</button>
+                <button class="custom-button" onclick="displayXSLT()">Результат</button>
+                <a href="https://github.com/YuShChEnKMaTvIi/CODES" class="custom-button">Посилання на GitHub</a>
+            </div>
+            <div id="condition" class="hidden-content">
+                <p>
+                    1. Завантажте документ XML, розроблений у попередніх роботах, в об'єкт
+                    документа та відобразіть у вікні браузера.
+                    <br>
+                    2. Використовуючи методи DOM XML, сформуйте HTML-сторінку, що містить
+                    таблицю з кількох стовпців .
+                    <br>
+                    3. Використовуючи методи DOM XML, замініть цифрові значення їх словесними
+                    еквівалентами.
+                </p>
+            </div>
+            <div id="result" class="hidden-content">
+                <h2>Оригінальний XML (усі 10 записів)</h2>
+                <div id="original-output">
+                    <p>Тут з’явиться результат...</p>
+                </div>
+                <h1 style="text-align: center;">Таблиця та Заміна Цифрових Значень</h1>
+                <div id="table-container"></div>
+                <div id="number-container" style="text-align: center; margin-top: 20px;">
+                    Оцінки: 1, 2, 4, 5, 7, 8, 9, 3, 6
+                </div> 
+            </div>
+
+
+          
+
+            
+        </main>
+    </div>
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+
+        function transformXML(xmlFile, xslFile, outputId) {
+            const resultDiv = document.getElementById(outputId);
+
+            // Загрузка XML
+            fetch(xmlFile)
+                .then(response => response.text())
+                .then(xmlText => {
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(xmlText, "text/xml");
+
+                    // Загрузка XSL
+                    fetch(xslFile)
+                        .then(response => response.text())
+                        .then(xslText => {
+                            const xsl = parser.parseFromString(xslText, "text/xml");
+
+                            if (window.XSLTProcessor) {
+                                const xsltProcessor = new XSLTProcessor();
+                                xsltProcessor.importStylesheet(xsl);
+
+                                const resultDocument = xsltProcessor.transformToFragment(xml, document);
+                                resultDiv.innerHTML = ""; // Очистка перед вставкой
+                                resultDiv.appendChild(resultDocument);
+                            } else if (window.ActiveXObject || "ActiveXObject" in window) {
+                                const transformedDocument = xml.transformNode(xsl);
+                                resultDiv.innerHTML = transformedDocument;
+                            } else {
+                                resultDiv.innerHTML = "Ваш браузер не підтримує XSLT.";
+                            }
+                        })
+                        .catch(() => {
+                            resultDiv.innerHTML = "Помилка завантаження XSL файлу.";
+                        });
+                })
+                .catch(() => {
+                    resultDiv.innerHTML = "Помилка завантаження XML файлу.";
+                });
+        }
+
+        function displayXSLT() {
+            document.getElementById("result").style.display = "block";
+
+            // Отображение оригинального XML
+            transformXML("сотрудники.xml", "сотрудники_оригинал.xsl", "original-output");
+
+        }
+
+
+
+
+ // Дані для таблиці
+ const data = [
+            { name: "Іван", age: 25, city: "Київ" },
+            { name: "Марія", age: 30, city: "Львів" },
+            { name: "Петро", age: 35, city: "Одеса" }
+        ];
+
+        // Мапа для заміни чисел на слова
+        const numberToWords = {
+            0: "нуль",
+            1: "один",
+            2: "два",
+            3: "три",
+            4: "чотири",
+            5: "п'ять",
+            6: "шість",
+            7: "сім",
+            8: "вісім",
+            9: "дев'ять"
+        };
+
+        // Функція для створення таблиці
+        function createTable(data) {
+            const table = document.createElement("table");
+            table.setAttribute("border", "1");
+
+            const headerRow = document.createElement("tr");
+            ["Ім'я", "Вік", "Місто"].forEach(headerText => {
+                const th = document.createElement("th");
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            data.forEach(rowData => {
+                const row = document.createElement("tr");
+                Object.values(rowData).forEach(cellData => {
+                    const td = document.createElement("td");
+                    td.textContent = cellData;
+                    row.appendChild(td);
+                });
+                table.appendChild(row);
+            });
+
+            document.getElementById("table-container").appendChild(table);
+        }
+
+        // Функція для заміни чисел на слова
+        function replaceNumbersWithWords(text) {
+            return text.replace(/\d/g, match => numberToWords[match] || match);
+        }
+
+        // Виклик функцій
+        createTable(data);
+
+        const container = document.getElementById("number-container");
+        container.textContent = replaceNumbersWithWords(container.textContent);
+
+
+    </script>
+</body>
+</html>
